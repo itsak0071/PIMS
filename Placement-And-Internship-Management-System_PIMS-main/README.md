@@ -226,11 +226,7 @@ PIMS/
 
 **Prerequisites:** Java 17+, Maven, PostgreSQL
 
-**1. Clone the repository**
-```bash
-git clone https://github.com/keerthana12hv/Placement-And-Internship-Management-System_PIMS.git
-cd Placement-And-Internship-Management-System_PIMS
-```
+
 
 **2. Configure `src/main/resources/application.properties`**
 ```properties

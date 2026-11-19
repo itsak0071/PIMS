@@ -18,14 +18,7 @@ PIMS manages end-to-end placement operations between **Students**, **Companies**
 
 ---
 
-## 🌐 Live Demo
 
-> 🖥 **Try the app here →** 🔗 [chic-cheesecake-df6cbd.netlify.app](https://chic-cheesecake-df6cbd.netlify.app)
-
-> 📄 **Explore the API →** 🔗 [Swagger UI](https://pims-backend-xa8s.onrender.com/swagger-ui/index.html)
-
-> ⚠️ Backend is on Render's free tier — first request may take ~30 seconds to wake up.
----
 
 ## 📌 Table of Contents
 
@@ -291,4 +284,3 @@ These are planned improvements — the core system is fully functional as-is.
 PIMS was developed as a full-stack, backend-focused system design exercise.  
 It demonstrates practical implementation of authentication, authorization, business rule enforcement, layered architecture, and cloud deployment in a production-style environment.
 
-🔗 [GitHub Profile](https://github.com/keerthana12hv) &nbsp;|&nbsp; 🌐 [Live Demo](https://chic-cheesecake-df6cbd.netlify.app) &nbsp;|&nbsp; 📄 [API Docs](https://pims-backend-xa8s.onrender.com/swagger-ui/index.html)

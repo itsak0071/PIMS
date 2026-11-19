@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Complete your PIMS student profile to unlock placement opportunities." />
+  <title>Complete Your Profile — PIMS Portal</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/onboarding.css" />
+</head>
+<body class="onboarding-body">
+
+  <!-- ── Top Header ── -->
+  <header class="onboard-header">
+    <a class="onboard-logo" href="index.html">
+      <span class="onboard-logo-icon">🎓</span>
+      <span>PIMS Portal</span>
+    </a>
+    <span class="onboard-step-label">Step 2 of 3 — Profile Setup</span>
+  </header>
+
+  <!-- ── Progress bar (60 % = step 2 of 3) ── -->
+  <div class="onboard-progress"
+       role="progressbar"
+       aria-valuenow="60"
+       aria-valuemin="0"
+       aria-valuemax="100"
+       aria-label="Profile setup progress">
+    <div class="onboard-progress-fill" style="width:60%"></div>
+  </div>
+
+  <main class="onboard-main">
+
+    <!-- ══════════════════════════════════════
+         LEFT — Steps panel (hidden on mobile)
+         ══════════════════════════════════════ -->
+    <aside class="onboard-steps-panel" aria-label="Setup steps">
+
+      <div class="onboard-steps">
+        <!-- Step 1: Done -->
+        <div class="onboard-step step-done">
+          <div class="step-circle">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="3.5" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <span class="step-name">Create Account</span>
+            <span class="step-desc">Email and password set</span>
+          </div>
+        </div>
+
+        <!-- Step 2: Current -->
+        <div class="onboard-step step-current">
+          <div class="step-circle">2</div>
+          <div class="step-content">
+            <span class="step-name">Complete Profile</span>
+            <span class="step-desc">Personal and academic details</span>
+          </div>
+        </div>
+
+        <!-- Step 3: Pending -->
+        <div class="onboard-step">
+          <div class="step-circle">3</div>
+          <div class="step-content">
+            <span class="step-name">Browse &amp; Apply</span>
+            <span class="step-desc">Find your dream opportunity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why complete your profile tip -->
+      <div class="onboard-tip-card" aria-label="Profile tips">
+        <div class="tip-icon">💡</div>
+        <p class="tip-title">Why complete your profile?</p>
+        <ul class="tip-list">
+          <li>Get matched to eligible jobs automatically</li>
+          <li>Companies see your academic credentials</li>
+          <li>Unlock resume upload after saving</li>
+          <li>Apply to openings in one click</li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════════════════════════════
+         RIGHT — Form card
+         ══════════════════════════════════════ -->
+    <div class="onboard-card">
+
+      <!-- Avatar + heading -->
+      <div class="onboard-card-top">
+        <div class="profile-initials-avatar" id="avatarDisplay" aria-hidden="true">
+          <span id="avatarInitials">?</span>
+        </div>
+        <div>
+          <h2>Tell us about yourself</h2>
+          <p>Fill in your details to start applying for placements and internships.</p>
+        </div>
+      </div>
+
+      <form id="profileForm" novalidate
+            onsubmit="event.preventDefault(); saveStudentProfile();">
+
+        <!-- ─── SECTION 1: Personal Information ─── -->
+        <div class="onboard-section">
+          <div class="onboard-section-label">
+            <span class="onboard-section-icon">👤</span>
+            Personal Information
+          </div>
+
+          <!-- Full Name + USN: 2-col -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="fullName">
+                Full Name <span class="required" aria-label="required">*</span>
+              </label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </span>
+                <input type="text" id="fullName" class="form-control"
+                       placeholder="e.g. Keerthana Reddy"
+                       autocomplete="name" required aria-required="true"
+                       oninput="updateAvatar(this.value)" />
+              </div>
+              <span class="form-hint">As it appears on official documents</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="usn">
+                USN / Enrollment ID <span class="required" aria-label="required">*</span>
+              </label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </span>
+                <input type="text" id="usn" class="form-control"
+                       placeholder="e.g. 1MS21CS001"
+                       autocomplete="off" required aria-required="true" />
+              </div>
+              <span class="form-hint">University seat number</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SECTION 2: Academic Information ─── -->
+        <div class="onboard-section">
+          <div class="onboard-section-label">
+            <span class="onboard-section-icon">🎓</span>
+            Academic Information
+          </div>
+
+          <!-- Branch + CGPA + Grad Year: 3-col -->
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label class="form-label" for="branch">
+                Branch <span class="required" aria-label="required">*</span>
+              </label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                  </svg>
+                </span>
+                <input type="text" id="branch" class="form-control"
+                       placeholder="e.g. CSE, ISE"
+                       required aria-required="true" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="cgpa">
+                CGPA <span class="required" aria-label="required">*</span>
+              </label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                </span>
+                <input type="number" id="cgpa" class="form-control"
+                       placeholder="e.g. 8.5" step="0.01" min="0" max="10"
+                       required aria-required="true" aria-describedby="cgpa-hint" />
+              </div>
+              <span id="cgpa-hint" class="form-hint">Out of 10.0</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="graduationYear">
+                Grad Year <span class="required" aria-label="required">*</span>
+              </label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8"  y1="2" x2="8"  y2="6"/>
+                    <line x1="3"  y1="10" x2="21" y2="10"/>
+                  </svg>
+                </span>
+                <input type="number" id="graduationYear" class="form-control"
+                       placeholder="e.g. 2025" min="2020" max="2035"
+                       required aria-required="true" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inline error -->
+        <div id="profileError" class="form-error" role="alert"
+             aria-live="polite" style="display:none; margin-bottom: var(--sp-3);"></div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-full" id="saveProfileBtn">
+          Save Profile &amp; Continue
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+
+        <p class="onboard-footer-note">
+          You can update all these details any time from your Profile settings.
+        </p>
+
+      </form>
+    </div><!-- /onboard-card -->
+
+  </main>
+
+  <!-- Scripts: config.js FIRST so BASE_URL is available -->
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/complete-student.js"></script>
+</body>
+</html>

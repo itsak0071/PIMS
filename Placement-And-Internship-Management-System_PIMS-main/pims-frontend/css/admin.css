@@ -1,0 +1,175 @@
+/* ============================================================
+   Admin Panel — admin.css  v2.1
+   Compact layout for 1920×1080 desktop.
+   Page-specific styles. All tokens in base.css.
+   ============================================================ */
+
+body.sidebar-open { overflow: hidden; }
+
+/* ════════════════════════════════════
+   TAB BAR — compact
+   ════════════════════════════════════ */
+
+.admin-tabs {
+  display: flex;
+  gap: var(--sp-1);
+  margin-bottom: var(--sp-4);            /* was sp-6 */
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0;
+}
+
+.admin-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);     /* was sp-3 sp-4 */
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.admin-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.admin-tab.active {
+  color: var(--primary-700);
+  border-bottom-color: var(--primary-600);
+  font-weight: var(--font-semibold);
+}
+
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  border-radius: var(--radius-full);
+  background: var(--slate-100);
+  color: var(--slate-600);
+}
+
+.tab-count.pending  { background: var(--warning-100); color: var(--warning-700); }
+.tab-count.approved { background: var(--success-100); color: var(--success-700); }
+
+/* ════════════════════════════════════
+   COMPANY CARDS — compact
+   ════════════════════════════════════ */
+
+#companyCards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);                      /* was sp-4 */
+}
+
+.company-approval-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);       /* was xl */
+  box-shadow: var(--shadow-card);
+  padding: var(--sp-3) var(--sp-4);     /* was sp-5 */
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.company-approval-card:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.company-approval-card.is-approved { border-left: 3px solid var(--success-400); }
+.company-approval-card.is-pending  { border-left: 3px solid var(--warning-400); }
+
+.company-card-logo {
+  width: 40px;                           /* was 48px */
+  height: 40px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--slate-600), var(--slate-800));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-base);           /* was xl */
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+}
+
+.company-card-info { flex: 1; min-width: 0; }
+
+.company-card-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.company-card-id {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.company-card-status { flex-shrink: 0; }
+
+.company-card-actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ════════════════════════════════════
+   SKELETON LOADERS
+   ════════════════════════════════════ */
+
+.skeleton-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  height: 64px;                          /* was 80px */
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%
+  );
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  .company-approval-card { flex-wrap: wrap; }
+  .company-card-actions  { width: 100%; justify-content: flex-end; }
+  .admin-tabs            { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PIMS Portal — Placement and Internship Management System. Sign in to manage campus placements and internships." />
+    <title>PIMS Portal — Sign In</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="auth-page">
+
+    <div class="auth-layout">
+
+      <!-- ════════════════════════════════════
+           LEFT PANEL — Branding / Hero
+           ════════════════════════════════════ -->
+      <aside class="auth-brand" aria-hidden="true">
+        <div class="auth-brand-content">
+
+          <!-- Logo -->
+          <div class="auth-brand-logo">
+            <div class="brand-icon">🎓</div>
+            <div>
+              <div class="brand-name">PIMS Portal</div>
+              <div class="brand-tagline">Placement &amp; Internship Management</div>
+            </div>
+          </div>
+
+          <!-- Hero copy -->
+          <div class="auth-brand-hero">
+            <h1>Connect Students<br/>with Opportunities</h1>
+            <p>A centralized platform for campus placements, internship management, and career development — trusted by placement coordinators across institutions.</p>
+          </div>
+
+          <!-- Feature list -->
+          <ul class="auth-features">
+            <li class="auth-feature">
+              <span class="auth-feature-icon">✓</span>
+              <span>Apply to top companies directly from your dashboard</span>
+            </li>
+            <li class="auth-feature">
+              <span class="auth-feature-icon">✓</span>
+              <span>Track application status in real-time</span>
+            </li>
+            <li class="auth-feature">
+              <span class="auth-feature-icon">✓</span>
+              <span>Upload and manage your resume securely</span>
+            </li>
+            <li class="auth-feature">
+              <span class="auth-feature-icon">✓</span>
+              <span>Companies review and shortlist directly on the platform</span>
+            </li>
+          </ul>
+
+          <!-- Feature highlights (replaces fake stats) -->
+          <div class="auth-highlights">
+            <div class="auth-highlight-pill">
+              <span class="auth-highlight-check">✓</span>
+              <span>Secure JWT Authentication</span>
+            </div>
+            <div class="auth-highlight-pill">
+              <span class="auth-highlight-check">✓</span>
+              <span>Resume Upload &amp; Management</span>
+            </div>
+            <div class="auth-highlight-pill">
+              <span class="auth-highlight-check">✓</span>
+              <span>Company Verification by Admin</span>
+            </div>
+            <div class="auth-highlight-pill">
+              <span class="auth-highlight-check">✓</span>
+              <span>Real-time Placement Tracking</span>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- ════════════════════════════════════
+           RIGHT PANEL — Auth Form
+           ════════════════════════════════════ -->
+      <main class="auth-form-panel">
+        <div class="auth-form-wrap">
+
+          <!-- Mobile-only logo (hidden on desktop) -->
+          <div class="auth-mobile-logo" aria-hidden="true">
+            <span class="auth-mobile-logo-icon">🎓</span>
+            <span>PIMS Portal</span>
+          </div>
+
+          <!-- ═══ LOGIN SECTION ═══ -->
+          <section id="loginSection" aria-labelledby="login-heading">
+
+            <div class="auth-header">
+              <h2 id="login-heading">Welcome back</h2>
+              <p>Sign in to your PIMS account to continue</p>
+            </div>
+
+            <form class="auth-form" id="loginForm" novalidate onsubmit="event.preventDefault(); login();">
+
+              <div class="form-group">
+                <label class="form-label" for="loginEmail">Email address</label>
+                <div class="input-wrapper input-icon-left">
+                  <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,12 2,6"/>
+                    </svg>
+                  </span>
+                  <input
+                    type="email"
+                    id="loginEmail"
+                    name="email"
+                    class="form-control"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="loginPassword">Password</label>
+                <div class="input-wrapper input-icon-left">
+                  <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </span>
+                  <input
+                    type="password"
+                    id="loginPassword"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                    aria-required="true"
+                  />
+                  <button
+                    type="button"
+                    class="input-action"
+                    onclick="togglePassword('loginPassword', this)"
+                    aria-label="Show or hide password"
+                  >
+                    <svg class="eye-show" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <svg class="eye-hide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none" aria-hidden="true">
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                      <line x1="1" y1="1" x2="23" y2="23"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Error / feedback -->
+              <div id="loginError" class="form-error" role="alert" style="display:none;" aria-live="polite"></div>
+
+              <!-- Cold-start notice (shown after 5s delay) -->
+              <div id="loginColdBanner" class="cold-start-banner" style="display:none;" role="status">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span>The server is waking up — this first request may take up to 60 seconds. Please wait, we'll log you in automatically.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full btn-lg" id="loginBtn">
+                Sign In
+              </button>
+
+            </form>
+
+            <div class="divider-text">or</div>
+
+            <p class="auth-toggle-text">
+              Don't have an account?
+              <button type="button" class="auth-toggle-btn" onclick="showRegister()">
+                Create one free →
+              </button>
+            </p>
+
+          </section>
+
+          <!-- ═══ REGISTER SECTION ═══ -->
+          <section id="registerSection" class="hidden" aria-labelledby="register-heading">
+
+            <div class="auth-header">
+              <h2 id="register-heading">Create your account</h2>
+              <p>Join the PIMS platform and get started today</p>
+            </div>
+
+            <form class="auth-form" id="registerForm" novalidate onsubmit="event.preventDefault(); register();">
+
+              <div class="form-group">
+                <label class="form-label" for="registerEmail">
+                  Email address <span class="required" aria-label="required">*</span>
+                </label>
+                <div class="input-wrapper input-icon-left">
+                  <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,12 2,6"/>
+                    </svg>
+                  </span>
+                  <input
+                    type="email"
+                    id="registerEmail"
+                    name="registerEmail"
+                    class="form-control"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="registerPassword">
+                  Password <span class="required" aria-label="required">*</span>
+                </label>
+                <div class="input-wrapper input-icon-left">
+                  <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </span>
+                  <input
+                    type="password"
+                    id="registerPassword"
+                    name="registerPassword"
+                    class="form-control"
+                    placeholder="Minimum 6 characters"
+                    autocomplete="new-password"
+                    required
+                    aria-required="true"
+                    aria-describedby="password-hint"
+                  />
+                  <button
+                    type="button"
+                    class="input-action"
+                    onclick="togglePassword('registerPassword', this)"
+                    aria-label="Show or hide password"
+                  >
+                    <svg class="eye-show" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <svg class="eye-hide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none" aria-hidden="true">
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                      <line x1="1" y1="1" x2="23" y2="23"/>
+                    </svg>
+                  </button>
+                </div>
+                <span id="password-hint" class="form-hint">Use at least 6 characters</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="registerRole">
+                  I am registering as <span class="required" aria-label="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <select id="registerRole" name="registerRole" class="form-control" required aria-required="true">
+                    <option value="STUDENT">🎓 Student — looking for jobs &amp; internships</option>
+                    <option value="COMPANY">🏢 Company — posting jobs &amp; hiring</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Error / feedback -->
+              <div id="registerError" class="form-error" role="alert" style="display:none;" aria-live="polite"></div>
+
+              <button type="submit" class="btn btn-primary btn-full btn-lg" id="registerBtn">
+                Create Account
+              </button>
+
+            </form>
+
+            <div class="divider-text">or</div>
+
+            <p class="auth-toggle-text">
+              Already have an account?
+              <button type="button" class="auth-toggle-btn" onclick="showLogin()">
+                Sign in instead →
+              </button>
+            </p>
+
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- Scripts — order matters -->
+    <script src="js/config.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

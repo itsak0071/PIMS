@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Complete your PIMS company profile to start posting jobs." />
+  <title>Complete Company Profile — PIMS Portal</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/onboarding.css" />
+</head>
+<body class="onboarding-body">
+
+  <!-- Top Header -->
+  <header class="onboard-header">
+    <a class="onboard-logo" href="index.html">
+      <span class="onboard-logo-icon">🏢</span>
+      <span>PIMS Portal</span>
+    </a>
+    <span class="onboard-step-label">Step 2 of 3 — Company Setup</span>
+  </header>
+
+  <!-- Progress bar -->
+  <div class="onboard-progress"
+       role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+    <div class="onboard-progress-fill" style="width:60%"></div>
+  </div>
+
+  <main class="onboard-main">
+
+    <!-- Left steps panel -->
+    <aside class="onboard-steps-panel" aria-label="Setup steps">
+
+      <div class="onboard-steps">
+        <div class="onboard-step step-done">
+          <div class="step-circle">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="3.5">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <span class="step-name">Create Account</span>
+            <span class="step-desc">Email and password set</span>
+          </div>
+        </div>
+        <div class="onboard-step step-current">
+          <div class="step-circle">2</div>
+          <div class="step-content">
+            <span class="step-name">Company Profile</span>
+            <span class="step-desc">Tell us about your company</span>
+          </div>
+        </div>
+        <div class="onboard-step">
+          <div class="step-circle">3</div>
+          <div class="step-content">
+            <span class="step-name">Admin Approval</span>
+            <span class="step-desc">Verified by PIMS admin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="onboard-tip-card">
+        <div class="tip-icon">💡</div>
+        <p class="tip-title">What happens next?</p>
+        <ul class="tip-list">
+          <li>Admin reviews and approves your profile</li>
+          <li>Once approved, post jobs for students</li>
+          <li>Review and shortlist applicants</li>
+          <li>Manage your recruitment pipeline</li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- Form card -->
+    <div class="onboard-card">
+
+      <div class="onboard-card-top">
+        <div class="profile-initials-avatar" id="avatarDisplay"
+             style="background:linear-gradient(135deg,#475569,#1e293b);">
+          <span id="avatarInitials">C</span>
+        </div>
+        <div>
+          <h2>Company Profile</h2>
+          <p>Reviewed by the PIMS admin before approval.</p>
+        </div>
+      </div>
+
+      <form id="companyProfileForm" novalidate
+            onsubmit="event.preventDefault(); saveCompanyProfile();">
+
+        <!-- Section 1: Company + Website in 2-col -->
+        <div class="onboard-section">
+          <div class="onboard-section-label">
+            <span class="onboard-section-icon">🏢</span>
+            Company Information
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="companyName">
+                Company Name <span class="required">*</span>
+              </label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                </span>
+                <input type="text" id="companyName" class="form-control"
+                       placeholder="e.g. Infosys Technologies"
+                       required aria-required="true"
+                       oninput="updateAvatar(this.value)" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="website">Website</label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  </svg>
+                </span>
+                <input type="url" id="website" class="form-control"
+                       placeholder="https://yourcompany.com" />
+              </div>
+              <span class="form-hint">Include https://</span>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:var(--sp-3);">
+            <label class="form-label" for="description">Company Description</label>
+            <textarea id="description" class="form-control"
+                      placeholder="Brief overview of your company, culture, and what you do…"
+                      rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- Section 2: Contact in 2-col -->
+        <div class="onboard-section">
+          <div class="onboard-section-label">
+            <span class="onboard-section-icon">📞</span>
+            Contact Details
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="contactPerson">Contact Person</label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </span>
+                <input type="text" id="contactPerson" class="form-control"
+                       placeholder="e.g. Ramesh Kumar" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Contact Email</label>
+              <div class="input-wrapper input-icon-left">
+                <span class="input-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </span>
+                <input type="email" id="contactEmail" class="form-control"
+                       placeholder="hr@yourcompany.com" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div id="profileError" class="form-error" role="alert"
+             aria-live="polite" style="display:none;margin-bottom:var(--sp-3);"></div>
+
+        <button type="submit" class="btn btn-primary btn-full" id="saveProfileBtn">
+          Submit for Approval
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+
+        <p class="onboard-footer-note">
+          Your profile will be reviewed by the PIMS admin. You can update details later.
+        </p>
+
+      </form>
+    </div>
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/complete-company.js"></script>
+</body>
+</html>

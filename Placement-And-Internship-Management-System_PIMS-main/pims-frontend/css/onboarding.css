@@ -1,0 +1,330 @@
+/* ============================================================
+   Onboarding / Profile Completion — onboarding.css
+   Shared by: complete-student-profile.html,
+              complete-company-profile.html
+   Requires:  base.css
+   ============================================================ */
+
+/* ── Page background ── */
+.onboarding-body {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ── Top header ── */
+.onboard-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 var(--sp-6);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.onboard-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.onboard-logo-icon { font-size: 24px; }
+
+.onboard-step-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: var(--font-medium);
+  background: var(--bg-secondary);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+}
+
+/* ── Progress bar ── */
+.onboard-progress {
+  height: 3px;
+  background: var(--border);
+}
+
+.onboard-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-500), var(--primary-600));
+  border-radius: 0 2px 2px 0;
+  transition: width 600ms ease;
+}
+
+/* ── Main two-column layout ── */
+.onboard-main {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--sp-5);
+  max-width: 960px;
+  margin: var(--sp-5) auto;
+  padding: 0 var(--sp-6) var(--sp-6);
+  align-items: start;
+}
+
+/* ── Left steps panel ── */
+.onboard-steps-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  position: sticky;
+  top: 80px;
+}
+
+.onboard-steps {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-5);
+  box-shadow: var(--shadow-card);
+}
+
+.onboard-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) 0;
+  position: relative;
+}
+
+/* Connector line between steps */
+.onboard-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 40px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--border);
+}
+
+.onboard-step.step-done::after    { background: var(--success-300); }
+.onboard-step.step-current::after { background: var(--primary-200); }
+
+/* Step circle */
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  z-index: 1;
+  position: relative;
+}
+
+.onboard-step.step-done .step-circle {
+  background: var(--success-500);
+  border-color: var(--success-500);
+  color: #ffffff;
+}
+
+.onboard-step.step-current .step-circle {
+  background: var(--primary-600);
+  border-color: var(--primary-600);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px var(--primary-100);
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 4px;
+}
+
+.step-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.onboard-step.step-current .step-name { color: var(--text-primary); }
+.onboard-step.step-done    .step-name { color: var(--success-600); }
+
+.step-desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: var(--leading-snug);
+}
+
+/* ── Tip card ── */
+.onboard-tip-card {
+  background: var(--primary-50);
+  border: 1px solid var(--primary-100);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-5);
+}
+
+.tip-icon {
+  font-size: 22px;
+  margin-bottom: var(--sp-2);
+}
+
+.tip-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--primary-800);
+  margin-bottom: var(--sp-3);
+}
+
+.tip-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.tip-list li {
+  font-size: var(--text-xs);
+  color: var(--primary-700);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  line-height: var(--leading-snug);
+}
+
+.tip-list li::before {
+  content: '→';
+  color: var(--primary-400);
+  flex-shrink: 0;
+  font-weight: var(--font-bold);
+}
+
+/* ── Right form card ── */
+.onboard-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--sp-5);
+}
+
+/* ── Card top: avatar + heading ── */
+.onboard-card-top {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.onboard-card-top h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+}
+
+.onboard-card-top p {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Initials Avatar ── */
+.profile-initials-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+  transition: background var(--transition);
+  letter-spacing: -0.02em;
+}
+
+/* ── Form sections inside card ── */
+.onboard-section {
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.onboard-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: var(--sp-4);
+  padding-bottom: 0;
+}
+
+.onboard-section-label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--sp-3);
+}
+
+.onboard-section-icon { font-size: 13px; }
+
+.onboard-section .form-group + .form-group,
+.onboard-section .form-grid-2  + .form-group {
+  margin-top: var(--sp-3);
+}
+
+/* ── Submit button ── */
+#saveProfileBtn {
+  height: 40px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  margin-top: var(--sp-2);
+  letter-spacing: 0.01em;
+}
+
+/* ── Footer note ── */
+.onboard-footer-note {
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: var(--sp-4);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .onboard-main {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    gap: var(--sp-5);
+    padding: var(--sp-6) var(--sp-5) var(--sp-10);
+    margin-top: var(--sp-6);
+  }
+  .onboard-steps-panel { display: none; }
+}
+
+@media (max-width: 640px) {
+  .onboard-main    { padding: var(--sp-4) var(--sp-4) var(--sp-8); margin-top: var(--sp-5); }
+  .onboard-card    { padding: var(--sp-6) var(--sp-5); border-radius: var(--radius-xl); }
+  .onboard-header  { padding: 0 var(--sp-4); }
+  .onboard-step-label { display: none; }
+  .onboard-card-top   { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
+  .onboard-card-top h2 { font-size: var(--text-xl); }
+}
